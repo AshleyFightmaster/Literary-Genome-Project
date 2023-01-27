@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='holder'>
+    <header class='header'>
+        <div class='header-content flex flex-c text-center text-white'>
+            <h2 class='header-title text-capitalize'>discover your next read.</h2><br />
+            <p class='header-text fs-18 fw-3'>“I declare after all there is no enjoyment like reading! How much sooner one tires of any thing than of a book! -- When I have a house of my own, I shall be miserable if I have not an excellent library.”
+                ― Jane Austen, Pride and Prejudice</p>
+            <!-- <div class="input-group" style="display: flex; justify-content: center;">
+                <div class="form-outline" style="display: flex; align-items: center; width: 35%;">
+                  <input type="search" id="form1" class="form-control" style="width: 100%"/>
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+            </div> -->
+            <div class='search-form'>
+                <div class='container'>
+                  <div class='search-form-content'>
+                    <form class='search-form' method="POST">
+                        {{ form.hidden_tag() }}
+                      <div class='search-form-elem flex flex-sb bg-white'>
+                        {{form.search(type = "text", class='form-control', style='border: none', placeholder='The Lost World ...')}} <br>
+                        {{form.submit(class="btn-large btn-outline-light text-muted", style='border: none; margin: 7px; background: white', value="Search")}}
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </header>
+</div>
+{% if book_info  %}
+<section class='booklist'>
+  <div class='container'>
+    <div class='section-title'>
+      <h2>Your search results</h2>
+    </div>
+{% for doc in book_info %}
+    <div class='book-item flex flex-column flex-sb'>
+        <div class='book-item-img'>
+            <img src = {{doc.cover_id}} alt = "cover" />
+        </div>
+        <div class='book-item-info text-center'>
+          <a href='#'>
+            <div class='book-item-info-item title fw-7 fs-18'>
+              <span>{{doc.title}}</span>
+            </div>
+          </a>
+    
+          <div class='book-item-info-item author fs-15'>
+            <span class='text-capitalize fw-7'>Author: </span>
+            <span>{{doc.author}}</span>
+          </div>
+          <a href="#" type="button" class="btn btn-outline-dark">Wishlist</a>
+          <a href='#' type="button" class="btn btn-outline-dark">Read</a>
+          
+        </div>
+      </div>
+      {% endfor %}
+  </section>
+
+{% else %}
+<section class='booklist'>
+  <div class='container'>
+    <div class='section-title'>
+      <h2>No Search Result Found!</h2>
+    </div>
+</section>
+{% endif %}
+
+
+{% endblock %}
