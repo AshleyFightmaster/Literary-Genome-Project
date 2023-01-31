@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class='book-details'>
+    <div class='container'>
+      <a href="/book_search" class='flex flex-c back-btn' >
+        <i class="fa-solid fa-arrow-left-long"></i>
+        <span class='fs-18 fw-6'>Go Back</span>
+      </a>
+
+      <div class='book-details-content grid'>
+        <div class ='book-details-img'>
+          <img src = {{book_details.cover_img}} alt = "cover img" />
+        </div>
+        <div class='book-details-info'>
+          <div class='book-details-item title'>
+            <span class='fw-6 fs-24'>{{book_details.title}}</span>
+          </div>
+          <div class='book-details-item description'>
+            <span>{{book_details.description}}</span>
+          </div>
+          <div class='book-details-item'>
+            <span class='fw-6'>Subjects: </span>
+            <span>{{book_details.subjects}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="list-btn">
+        <a href="{{url_for('books.add_to_wishlist', book_key=book_details.key)}}" style="margin: 5px;" class="btn btn-outline-dark wishlist-btn">Wishlist</a>
+        <a href='#' style="margin: 5px;" class="btn btn-outline-dark read-btn">Read</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

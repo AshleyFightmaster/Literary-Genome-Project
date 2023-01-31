@@ -42,7 +42,7 @@
             <img src = {{doc.cover_id}} alt = "cover" />
         </div>
         <div class='book-item-info text-center'>
-          <a href='#'>
+          <a href="{{url_for('books.book_details', book_key=doc.key)}}">
             <div class='book-item-info-item title fw-7 fs-18'>
               <span>{{doc.title}}</span>
             </div>
@@ -52,9 +52,6 @@
             <span class='text-capitalize fw-7'>Author: </span>
             <span>{{doc.author}}</span>
           </div>
-          <a href="#" type="button" class="btn btn-outline-dark">Wishlist</a>
-          <a href='#' type="button" class="btn btn-outline-dark">Read</a>
-          
         </div>
       </div>
       {% endfor %}
